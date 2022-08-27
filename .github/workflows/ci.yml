@@ -28,11 +28,8 @@ jobs:
         with:
           node-version: 16
 
-      # Just to speedup the install slightly
-      - run: npm install -g yarn
-
       # Clean install (using lock file)
       # - run: npm ci
       - run: yarn install --immutable
       - run: npm run storybook
-      - run: npm test
+      - run: npm run test-storybook:ci
