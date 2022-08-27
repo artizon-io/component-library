@@ -1,0 +1,14 @@
+// Not in used. Currently using Typescript compiler for transpilation
+{
+  "presets": [
+    [
+      "@babel/preset-typescript", {
+        "isTsx": true
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@emotion"
+  ]
+}

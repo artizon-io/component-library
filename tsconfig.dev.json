@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

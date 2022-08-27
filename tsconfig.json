@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    // https://stackoverflow.com/questions/44020689/why-would-i-use-typescript-and-babel-together
+    "target": "es6",
+    "moduleResolution": "node",
+    "outDir": "dist",
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
