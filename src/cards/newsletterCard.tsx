@@ -117,7 +117,7 @@ export const NewsletterCard : FC<{
   readonly title : string;
   readonly bulletPointsTitle : string;
   readonly bulletPoints : string[];
-  readonly onSubmitBusinessLogic : (string) => void;
+  readonly onSubmitBusinessLogic? : (string) => void;
 
 } & React.HTMLAttributes<HTMLDivElement>> = ({ title, bulletPoints, bulletPointsTitle, onSubmitBusinessLogic }) => {
   // useEffect(() => {

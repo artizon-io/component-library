@@ -13,14 +13,15 @@ const StyledNewsletterForm = styled(StyledFlexbox.withComponent('form'))`
 `;
 
 export const NewsletterForm : FC<{
-  readonly onSubmitBusinessLogic : (string) => void;
+  readonly onSubmitBusinessLogic? : (string) => void;
 
 } & React.HTMLAttributes<HTMLFormElement>> = ({ onSubmitBusinessLogic }) => {
   const [email, setEmail] = useState('');
 
   function onSubmit(e) {
     e.preventDefault();
-    onSubmitBusinessLogic(email);
+    if (onSubmitBusinessLogic)
+      onSubmitBusinessLogic(email);
     setEmail('');
   }
 
