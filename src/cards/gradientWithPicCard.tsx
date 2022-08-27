@@ -3,7 +3,7 @@ import React,{ FC } from "react";
 import { Flexbox } from "../layouts/flexbox";
 import { FontStyle } from "../styles/font";
 import { GradientCardStyle } from "./gradientCardStyle";
-import { colorScheme, getColorsFromScheme } from "../misc";
+import { colorScheme, getColorsFromScheme } from "../helpers";
 import { useTheme } from "../hooks/useTheme";
 import { longTransitionDuration } from "../styles/transition";
 

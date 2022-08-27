@@ -1,9 +1,6 @@
-'use strict';
-
 // if (process.env.NODE_ENV === 'production') {
 
 // module.exports = require('./dist/index');
-// export * from "./dist/index";
 
 // } else {
 
@@ -26,4 +23,6 @@ export * from "./src/tooltips/tooltip";
 export * from "./src/hooks/useTheme";
 export * from "./src/footers/footer";
 export * from "./src/cards/articleCard";
+export * from "./src/misc/counter";
+
 // }

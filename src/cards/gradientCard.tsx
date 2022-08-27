@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo, ArrowRight, EnvelopeSimple, SmileyNervous, PaperPlaneRight } from "phosphor-react";
 import { ThemeContext } from "../contexts/themeContext";
-import { colorScheme, copyToClipboard, getColorsFromScheme } from "../misc";
+import { colorScheme, copyToClipboard, getColorsFromScheme } from "../helpers";
 import { Flexbox } from "../layouts/flexbox";
 import { CardStyle } from "./cardStyle";
 import { FontStyle } from "../styles/font";

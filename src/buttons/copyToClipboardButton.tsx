@@ -2,7 +2,7 @@ import React, { FC, SyntheticEvent, useState, useEffect, useContext, ReactNode }
 import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
-import { copyToClipboard } from "../misc";
+import { copyToClipboard } from "../helpers";
 import { useTheme } from "../hooks/useTheme";
 import { shortTransitionDuration } from "../styles/transition";
 

@@ -3,3 +3,4 @@ types/
 dist/
 .husky
 .README.md
+*.log
