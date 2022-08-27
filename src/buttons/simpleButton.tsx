@@ -31,6 +31,7 @@ const StyledSimpleButton = styled.button<{
 `;
 
 export const SimpleButton : FC<{
+  readonly type?: string;
 
 } & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick }) => {
   const { theme, toggleTheme } = useTheme();
