@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
     tags:
-      - '*'
+      - 'v[0-9].[0-9]+.[0-9]+'
   pull_request:
     branches: [ main ]
 
@@ -34,7 +34,13 @@ jobs:
       # - run: npm ci
       - run: yarn install --immutable
 
-      - name: Install test-storybook:ci dependencies
-        run: npm -g install concurrently http-server wait-on
+      # - name: Install test-storybook:ci dependencies
+      #   run: npm -g install concurrently http-server wait-on
 
-      - run: npm run test-storybook:ci
+      # - run: npm run test-storybook:ci
+
+      - name: Build types
+        run: npm run build-types
+
+      - name: Build
+        run: npm run build
