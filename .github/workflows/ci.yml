@@ -4,13 +4,15 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ main ]
-    tags:
-      - 'v[0-9].[0-9]+.[0-9]+'
+    tags-ignore:
+      - '*'
+    # tags:
+    #   - 'v[0-9].[0-9]+.[0-9]+'
   pull_request:
     branches: [ main ]
 
 jobs:
-  test-build:
+  test-storybook:
     runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -34,10 +36,21 @@ jobs:
       # - run: npm ci
       - run: yarn install --immutable
 
-      # - name: Install test-storybook:ci dependencies
-      #   run: npm -g install concurrently http-server wait-on
+      - name: Install test-storybook:ci dependencies
+        run: npm -g install concurrently http-server wait-on
 
-      # - run: npm run test-storybook:ci
+      - run: npm run test-storybook:ci
+
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: yarn install --immutable
 
       - name: Build types
         run: npm run build-types

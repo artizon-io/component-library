@@ -14,7 +14,7 @@
     "clean-esm": "rm -rf esm",
     "storybook": "npx start-storybook -p 6006",
     "test": "npx test-storybook",
-    "postinstall": "husky install && npx husky add .husky/pre-commit \"yarn test\"",
+    "postinstall": "husky install && npx husky add .husky/pre-commit \"\"",
     "test-storybook:ci": "concurrently --kill-others-on-fail --success last \"npx build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npx test-storybook\""
   },
   "author": "mingsumsze",
