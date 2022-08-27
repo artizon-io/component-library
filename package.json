@@ -4,18 +4,18 @@
   "description": "My personal design system",
   "main": "index.js",
   "scripts": {
-    "dev-types-ts": "npm run clean-types && npx tsc --project tsconfig.dev.json --watch",
-    "dev-types-rollup": "rollup --config rollup.dts.config.js --watch",
-    "build": "npm run clean && npx tsc --project tsconfig.json && rollup --config rollup.config.js && npm run build-types",
-    "build-types": "npm run clean-types && npx tsc --project tsconfig.dev.json && rollup --config rollup.dts.config.js",
+    "build": "npm run clean && npx tsc --project tsconfig.build.json && rollup --config rollup.config.js",
+    "build-types": "npm run clean-types && npx tsc --project tsconfig.build-types.json && rollup --config rollup.dts.config.js",
     "clean": "rm -rf dist",
     "clean-types": "rm -rf types",
-    "build-esm": "npm run clean-esm && npx babel src --out-dir esm --extensions \".tsx\" --ignore \"src/index.tsx\" && npx babel src/**/font.d.ts --out-dir esm --copy-files",
-    "clean-esm": "rm -rf esm",
     "storybook": "npx start-storybook -p 6006",
-    "test": "npx test-storybook",
-    "postinstall": "husky install && npx husky add .husky/pre-commit \"\"",
-    "test-storybook:ci": "concurrently --kill-others-on-fail --success last \"npx build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npx test-storybook\""
+    "test-storybook": "npx test-storybook",
+    "test-storybook:ci": "concurrently --kill-others-on-fail --success last \"npx build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npx test-storybook\"",
+    "postinstall": "husky install && npx husky add .husky/pre-commit \"\""
+  },
+  "unusedScripts": {
+    "build-esm": "npm run clean-esm && npx babel src --out-dir esm --extensions \".tsx\" --ignore \"src/index.tsx\" && npx babel src/**/font.d.ts --out-dir esm --copy-files",
+    "clean-esm": "rm -rf esm"
   },
   "author": "mingsumsze",
   "license": "MIT",

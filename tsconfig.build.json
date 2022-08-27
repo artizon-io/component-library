@@ -2,9 +2,10 @@
   "compilerOptions": {
     "jsx": "react",
     "esModuleInterop": true,
+    "sourceMap": true,
+    "target": "es6",
     "moduleResolution": "node",
-    "lib": ["ESNext", "DOM"],
-    // https://stackoverflow.com/questions/44020689/why-would-i-use-typescript-and-babel-together
+    "outDir": "dist",
   },
   "include": [
     "src"
@@ -12,5 +13,6 @@
   "exclude": [
     "node_modules",
     "dist",
+    "src/**/*.stories.tsx",
   ]
 }

@@ -8,13 +8,13 @@
     "declarationMap": true,
     "sourceMap": true,
     "moduleResolution": "node",
-    "lib": ["ESNext", "DOM"]
   },
   "include": [
     "src"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "src/**/*.stories.tsx"
   ]
 }
