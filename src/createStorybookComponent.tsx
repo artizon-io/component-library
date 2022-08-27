@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
 `;
 
 // A higher order component that returns a component with its storybook config
-export default function createStorybookComponent(Component : FC<any>, args? : any) :
+export default function createStorybookComponent<Props>(Component : FC<Props>, args? : Props) :
   typeof GlobalStyleProvider
   // [{
   //   readonly title: string;
