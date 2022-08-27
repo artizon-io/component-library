@@ -31,4 +31,8 @@ jobs:
       # Clean install (using lock file)
       # - run: npm ci
       - run: yarn install --immutable
+
+      - name: Install test-storybook:ci dependencies
+        run: yarn -g add concurrently http-server wait-on
+
       - run: npm run test-storybook:ci
