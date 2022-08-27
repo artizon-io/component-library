@@ -15,7 +15,7 @@
     "storybook": "npx start-storybook -p 6006",
     "test": "npx test-storybook",
     "postinstall": "husky install && npx husky add .husky/pre-commit \"yarn test\"",
-    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npm run test-storybook\""
+    "test-storybook:ci": "concurrently --kill-others-on-fail --success last \"npx build-storybook --quiet && http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && npx test-storybook\""
   },
   "author": "mingsumsze",
   "license": "MIT",
