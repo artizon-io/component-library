@@ -15,6 +15,7 @@ import { FontStyle } from "../styles/font";
 import { useTheme } from "../hooks/useTheme";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 import { Logo } from "../logos/logo";
+import { List } from "../lists/list";
 
 
 const StyledNewsletterCard = styled(Flexbox)`
@@ -73,40 +74,6 @@ const StyledNewsletterCard = styled(Flexbox)`
     }
   }
   & > .bullet-points {
-    list-style: none;
-
-    & > li {
-      & > p {
-        color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
-        transition: color ${shortTransitionDuration}s;
-
-        ${FontStyle({
-          size: 18,
-          weight: "light",
-        })}
-
-        line-height: 1.5;
-
-        display: inline;
-
-        & > em {
-          color: ${props => props.isDark ? 'var(--off-off-white)' : 'var(--medium-dark-gray)'};
-          transition: color ${shortTransitionDuration}s;
-
-          ${FontStyle({
-            size: 18,
-            weight: "normal",
-            style: "italic"
-          })}
-        }
-      }
-      & > svg {
-        color: var(--blue);
-      }
-      &:not(:nth-of-type(1)) {
-        margin-top: 20px;  
-      }
-    }
     margin-bottom: 15px;
   }
   & > .form {
@@ -149,15 +116,10 @@ export const NewsletterCard : FC<{
         className="bullet-points-title"
       >{bulletPointsTitle}</ReactMarkdown>
 
-      <ul className="bullet-points">
-        {bulletPoints.map((elem, index) =>
-          <li key={index}>
-            <ArrowRight size={20} weight="bold"/>
-            &nbsp;
-            <ReactMarkdown>{elem}</ReactMarkdown>
-          </li>
-        )}
-      </ul>
+      <List
+        bulletPoints={bulletPoints}
+        className="bullet-points"
+      ></List>
 
       <NewsletterForm
         onSubmitBusinessLogic={onSubmitBusinessLogic}
