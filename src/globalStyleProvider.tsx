@@ -7,6 +7,7 @@ import InterRegularItalicWoff from '../fonts/Inter-Italic.woff';
 import InterMediumWoff from '../fonts/Inter-Medium.woff';
 import InterSemiBoldWoff from '../fonts/Inter-SemiBold.woff';
 import InterBoldWoff from '../fonts/Inter-Bold.woff';
+import FiraCodeRegular from '../fonts/FiraCode-Regular.woff';
 import { ThemeContext } from './contexts/themeContext';
 import { useTheme } from './hooks/usetheme';
 
@@ -73,6 +74,12 @@ export const GlobalStyleProvider : FC<{
             font-family: 'Inter';
             src: url(${InterBoldWoff}) format('woff');
             font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'FiraCode';
+            src: url(${FiraCodeRegular}) format('woff');
+            font-weight: 400;
             font-style: normal;
           }
           * {
