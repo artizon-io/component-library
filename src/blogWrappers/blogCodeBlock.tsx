@@ -1,7 +1,7 @@
 import React, { FC, JSXElementConstructor, ReactElement, ReactNode } from 'react';
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import styled from '@emotion/styled';
-import { useTheme } from '../hooks/usetheme';
+import { useThemeContext} from '../hooks/useThemeContext';
 import { FontStyle } from '../styles/font';
 import { CardStyle } from '../cards/cardStyle';
 import { longTransitionDuration, shortTransitionDuration } from '../styles/transition';
@@ -126,7 +126,7 @@ export const BlogCodeBlock : FC<any> = (props) => {
   const { children, className } = props.children.props;
   const lang = className.match(/language-(?<lang>.*)/).groups.lang;
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

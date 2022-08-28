@@ -12,7 +12,7 @@ import { CardStyle } from "./cardStyle";
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 import { Logo } from "../logos/logo";
 import { List } from "../lists/list";
@@ -92,7 +92,7 @@ export const NewsletterCard : FC<{
   // useEffect(() => {
   //   console.log(bulletPoints);
   // }, []);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

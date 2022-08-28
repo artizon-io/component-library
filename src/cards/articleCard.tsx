@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { FontStyle } from "../styles/font";
 import { shortTransitionDuration } from "../styles/transition";
 
@@ -51,7 +51,7 @@ export const ArticleCard : FC<{
   readonly title: string;
 
 }> = ({ date, title }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

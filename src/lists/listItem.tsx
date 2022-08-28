@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import React, { FC } from "react";
 import { shortTransitionDuration } from "../styles/transition";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/usetheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { ArrowRight } from "phosphor-react";
 
 
@@ -35,7 +35,7 @@ const StyledListItem = styled.li<{
 export const ListItem : FC<{
 
 } & React.HTMLAttributes<HTMLLIElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

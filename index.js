@@ -20,7 +20,7 @@ export * from "./src/inputs/emailInput";
 export * from "./src/navbars/navbar";
 export * from "./src/showcases/gradientShowcase";
 export * from "./src/tooltips/tooltip";
-export * from "./src/hooks/useTheme";
+export * from "./src/hooks/useThemeContext";
 export * from "./src/footers/footer";
 export * from "./src/cards/articleCard";
 export * from "./src/misc/counter";

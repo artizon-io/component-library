@@ -4,7 +4,7 @@ import { Flexbox } from "../layouts/flexbox";
 import { FontStyle } from "../styles/font";
 import { GradientCardStyle } from "./gradientCardStyle";
 import { colorScheme, getColorsFromScheme } from "../helpers";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration } from "../styles/transition";
 
 
@@ -35,7 +35,7 @@ export const GradientWithPicCard : FC<{
   readonly pic: string;
 
 } & React.HTMLAttributes<HTMLDivElement>> = ({ colorScheme, pic }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   // Always use ligher shades regardless of theme

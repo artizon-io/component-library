@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { SmileyNervous } from "phosphor-react";
 import styled from "@emotion/styled";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 const StyledLogo = styled.span<{
@@ -17,7 +17,7 @@ export const Logo : FC<{
   readonly size: number;
 
 }> = ({ size }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

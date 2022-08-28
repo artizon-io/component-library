@@ -9,7 +9,7 @@ import InterSemiBoldWoff from '../fonts/Inter-SemiBold.woff';
 import InterBoldWoff from '../fonts/Inter-Bold.woff';
 import FiraCodeRegular from '../fonts/FiraCode-Regular.woff';
 import { ThemeContext } from './contexts/themeContext';
-import { useTheme } from './hooks/usetheme';
+import { useThemeContext } from './hooks/useThemeContext';
 
 // See (not resolved) (switched to using emotion instead)
 // https://stackoverflow.com/questions/72078108/how-to-add-global-style-option-for-a-react-ui-library

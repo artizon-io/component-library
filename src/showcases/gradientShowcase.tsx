@@ -4,7 +4,7 @@ import { Flexbox } from "../layouts/flexbox";
 import { FontStyle } from "../styles/font";
 import { GradientWithPicCard } from "../cards/gradientWithPicCard"
 import { colorScheme } from "../helpers";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 const StyledGradientShowcase = styled(Flexbox)<{
@@ -40,7 +40,7 @@ export const GradientShowcase : FC<{
   readonly pic: string;
 
 }> = ({ colorScheme, title, description, pic }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

@@ -7,7 +7,7 @@ import { colorScheme, copyToClipboard, getColorsFromScheme } from "../helpers";
 import { Flexbox } from "../layouts/flexbox";
 import { CardStyle } from "./cardStyle";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 import { GradientCardStyle } from "./gradientCardStyle";
 
@@ -55,7 +55,7 @@ export const GradientCard : FC<{
   readonly colorScheme: colorScheme;
 
 }> = ({ title, body, colorScheme }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   let [colorFrom, colorTo] = getColorsFromScheme(colorScheme, isDark);

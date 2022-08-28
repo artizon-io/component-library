@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 
@@ -21,7 +21,7 @@ const SubHeadingStyle = styled.h2<{
 export const SubHeading : FC<{
   
 } & React.HTMLAttributes<HTMLHeadingElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

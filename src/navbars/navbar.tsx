@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeToggleButton } from "../buttons/themeToggleButton";
 import { SmileyNervous } from "phosphor-react";
 import { AnimatePresence } from 'framer-motion';
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration, longTransitionDuration } from "../styles/transition";
 import { Logo } from "../logos/logo";
 
@@ -29,7 +29,7 @@ const NavbarStyle = styled.nav<{
 `;
 
 export const Navbar : FC<{}> = ({}) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

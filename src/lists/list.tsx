@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { ListItem } from "./listItem";
 
 
@@ -18,7 +18,7 @@ export const List : FC<{
   readonly children: ReactNode[];
 
 } & React.HTMLAttributes<HTMLUListElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

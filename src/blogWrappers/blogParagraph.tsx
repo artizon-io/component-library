@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { shortTransitionDuration } from "../styles/transition";
 import { FontStyle } from "../styles/font";
 import React, { FC } from "react";
-import { useTheme } from "../hooks/usetheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const StyledBlogParagraph = styled.p<{
   readonly isDark: boolean;
@@ -38,7 +38,7 @@ const StyledBlogParagraph = styled.p<{
 export const BlogParagraph : FC<{
 
 } & React.HTMLAttributes<HTMLParagraphElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

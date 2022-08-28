@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import { At } from "phosphor-react";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 
 // For affect the FOLLOWING sibling when element is hovered, see
@@ -69,7 +69,7 @@ export const EmailInput : FC<{
 } & React.HTMLAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLInputElement>> = ({
   required, onChange, value, className
 }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

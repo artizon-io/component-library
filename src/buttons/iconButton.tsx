@@ -5,7 +5,7 @@ import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { Github } from 'react-bootstrap-icons';
 import { ThemeContext } from "../contexts/themeContext";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration, longTransitionDuration } from "../styles/transition";
 
 
@@ -39,7 +39,7 @@ export const IconButton : FC<{
   readonly type: "github" | "link";
 
 } & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick, type }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

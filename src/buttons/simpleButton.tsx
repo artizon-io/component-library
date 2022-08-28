@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { FontStyle } from "../styles/font";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 
 
@@ -34,7 +34,7 @@ export const SimpleButton : FC<{
   readonly type?: string;
 
 } & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (

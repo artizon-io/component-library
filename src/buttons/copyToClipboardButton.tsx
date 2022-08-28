@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { copyToClipboard } from "../helpers";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 
@@ -37,7 +37,7 @@ export const CopyToClipboardButton : FC<{
 
   const duration = 0.3;
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   const boxVariants = {

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration, longTransitionDuration } from "../styles/transition";
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
@@ -73,7 +73,7 @@ export const Footer : FC<{
   readonly copyright: string;
 
 }> = ({ navs, copyright }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
   return (
