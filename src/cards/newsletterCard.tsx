@@ -16,6 +16,7 @@ import { useTheme } from "../hooks/useTheme";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 import { Logo } from "../logos/logo";
 import { List } from "../lists/list";
+import { ListItem } from "../lists/listItem";
 
 
 const StyledNewsletterCard = styled(Flexbox)`
@@ -45,7 +46,8 @@ const StyledNewsletterCard = styled(Flexbox)`
 
     margin-bottom: 15px;
   }
-  & > .bullet-points-title > p {
+  /* bullet-points-title */
+  & > p {
     color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
     transition: color ${shortTransitionDuration}s;
 
@@ -113,13 +115,16 @@ export const NewsletterCard : FC<{
 
       <ReactMarkdown
         remarkPlugins={[ gfm ]}
-        className="bullet-points-title"
       >{bulletPointsTitle}</ReactMarkdown>
 
       <List
-        bulletPoints={bulletPoints}
         className="bullet-points"
-      ></List>
+      >
+        {bulletPoints.map(text => <ReactMarkdown components={{
+          // @ts-ignore
+          p: ListItem
+        }}>{text}</ReactMarkdown>)}
+      </List>
 
       <NewsletterForm
         onSubmitBusinessLogic={onSubmitBusinessLogic}
