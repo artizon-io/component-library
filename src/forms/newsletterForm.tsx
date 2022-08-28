@@ -35,7 +35,7 @@ export const NewsletterForm : FC<{
   return (
     <StyledNewsletterForm
       type="horizontal"
-      gap="small"
+      gap={15}
     >
       <EmailInput required onChange={onChange} value={email} className="email-input"/>
       <SimpleButton type="submit" onClick={onSubmit}>Sign me up!</SimpleButton>

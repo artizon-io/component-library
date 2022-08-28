@@ -98,12 +98,12 @@ export const NewsletterCard : FC<{
   return (
     <StyledNewsletterCard
       type="vertical"
-      gap="small"
+      gap={15}
       isDark={isDark}
     >
       <Flexbox
         type="horizontal"
-        gap="small"
+        gap={15}
         className="newsletter-icons"
       >
         <Logo size={48}/>

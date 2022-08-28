@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 export const StyledFlexbox = styled.div<{
   readonly type: "horizontal" | "vertical";
-  readonly gap: "big" | "small";
+  readonly gap: number;
 }>`
   display: flex;
   flex-direction: ${props => props.type === "horizontal" ? "row" : "column"};
-  gap: ${props => props.gap === "big" ? "48px" : "16px"};
+  gap: ${props => props.gap}px;
 `;
 
 // For why "className" prop, see
@@ -17,7 +17,7 @@ export const StyledFlexbox = styled.div<{
 
 export const Flexbox : FC<{
   readonly type: "horizontal" | "vertical";
-  readonly gap: "big" | "small";
+  readonly gap: number;
 
 } & React.HTMLAttributes<HTMLDivElement>> = ({children, type, gap, className}) => {
   return (
