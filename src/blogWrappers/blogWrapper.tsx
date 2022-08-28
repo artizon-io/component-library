@@ -5,27 +5,33 @@ import { BlogHeading } from "./blogHeading";
 import { BlogList } from "./blogList";
 import { BlogListItem } from "./blogListItem";
 import { BlogParagraph } from "./blogParagraph";
+import { BlogCodeBlock } from "./blogCodeBlock";
+import { Flexbox } from "../layouts/flexbox";
 
 // https://mdxjs.com/docs/using-mdx/#mdx-content
 
-const StyledBlogWrapper = styled(MDXProvider)`
+const StyledBlogWrapper = styled(Flexbox)`
 `;
-
-export const blogComponents = {
-  h1: BlogHeading,
-  ul: BlogList,
-  li: BlogListItem,
-  p: BlogParagraph
-} 
 
 export const BlogWrapper : FC<{
 
 } & React.HTMLAttributes<HTMLDivElement>> = ({ children }) => {
   return (
     <StyledBlogWrapper
-      components={blogComponents}
+      type="vertical"
+      gap={30}
     >
-      {children}
+      <MDXProvider
+        components={{
+          h1: BlogHeading,
+          ul: BlogList,
+          li: BlogListItem,
+          p: BlogParagraph,
+          pre: BlogCodeBlock
+        }}
+      >
+        {children}
+      </MDXProvider>
     </StyledBlogWrapper>
   )
 }

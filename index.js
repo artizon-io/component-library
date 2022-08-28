@@ -24,5 +24,6 @@ export * from "./src/hooks/useTheme";
 export * from "./src/footers/footer";
 export * from "./src/cards/articleCard";
 export * from "./src/misc/counter";
+export * from "./src/blogWrappers/blogWrapper";
 
 // }
