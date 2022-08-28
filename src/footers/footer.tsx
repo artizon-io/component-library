@@ -16,7 +16,7 @@ const StyledFooter = styled.footer`
 
   & > .nav {
     & > ul {
-      width: 60%;
+      width: 100%;
       list-style: none;
 
       & > li > p > a {
@@ -37,6 +37,15 @@ const StyledFooter = styled.footer`
         }
 
         transition: color ${shortTransitionDuration}s, text-decoration-color ${shortTransitionDuration}s;
+      }
+
+      display: grid;
+      gap: 10px;
+
+      /* grid-template-columns: repeat(3, minmax(240px, 1fr)); */
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));  // dynamically calculate no. rows needed
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       }
     }
     margin-bottom: 30px;
