@@ -81,7 +81,7 @@ const Pre = styled.pre`
   
   ${FontStyle({
     size: 14,
-    weight: "light",
+    weight: "normal",
     lineHeight: 1.6
   })}
   font-family: FiraCode;

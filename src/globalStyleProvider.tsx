@@ -6,7 +6,8 @@ import InterRegularItalicWoff from '../fonts/Inter-Italic.woff';
 import InterMediumWoff from '../fonts/Inter-Medium.woff';
 import InterSemiBoldWoff from '../fonts/Inter-SemiBold.woff';
 import InterBoldWoff from '../fonts/Inter-Bold.woff';
-import FiraCodeRegular from '../fonts/FiraCode-Regular.woff';
+import FiraCodeLightWoff from '../fonts/FiraCode-Light.woff';
+import FiraCodeRegularWoff from '../fonts/FiraCode-Regular.woff';
 import { ThemeContext } from './contexts/themeContext';
 import { setColors } from './styles/color';
 
@@ -76,7 +77,13 @@ export const GlobalStyleProvider : FC<{
           }
           @font-face {
             font-family: 'FiraCode';
-            src: url(${FiraCodeRegular}) format('woff');
+            src: url(${FiraCodeLightWoff}) format('woff');
+            font-weight: 300;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'FiraCode';
+            src: url(${FiraCodeRegularWoff}) format('woff');
             font-weight: 400;
             font-style: normal;
           }
