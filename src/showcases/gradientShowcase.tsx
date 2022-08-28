@@ -46,7 +46,7 @@ export const GradientShowcase : FC<{
   return (
     <StyledGradientShowcase
       type="vertical"
-      gap="small"
+      gap={15}
       isDark={isDark}
     >
       <GradientWithPicCard
