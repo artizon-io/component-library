@@ -15,7 +15,7 @@ const StyledNewsletterForm = styled(StyledFlexbox.withComponent('form'))`
 export const NewsletterForm : FC<{
   readonly onSubmitBusinessLogic? : (string) => void;
 
-} & React.HTMLAttributes<HTMLFormElement>> = ({ onSubmitBusinessLogic }) => {
+} & React.HTMLAttributes<HTMLFormElement>> = ({ onSubmitBusinessLogic, ...props }) => {
   const [email, setEmail] = useState('');
 
   function onSubmit(e) {
@@ -36,8 +36,10 @@ export const NewsletterForm : FC<{
     <StyledNewsletterForm
       type="horizontal"
       gap={15}
+      {...props}
     >
       <EmailInput required onChange={onChange} value={email} className="email-input"/>
+      {/* @ts-expect-error */}
       <SimpleButton type="submit" onClick={onSubmit}>Sign me up!</SimpleButton>
     </StyledNewsletterForm>
   );

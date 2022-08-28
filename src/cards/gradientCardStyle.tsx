@@ -3,14 +3,11 @@ import { CardStyle } from './cardStyle';
 
 
 
-export const GradientCardStyle = ({ colorFrom, colorTo, isDark } : {
+export const GradientCardStyle = ({ colorFrom, colorTo } : {
   readonly colorFrom : string;
   readonly colorTo : string;
-  readonly isDark : boolean;
 }) => css`
-  ${CardStyle({
-    isDark
-  })};
+  ${CardStyle()};
 
   &:hover {
     &:before {

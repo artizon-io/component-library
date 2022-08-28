@@ -7,9 +7,7 @@ import { colorScheme } from "../helpers";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
-const StyledGradientShowcase = styled(Flexbox)<{
-  readonly isDark: boolean;
-}>`
+const StyledGradientShowcase = styled(Flexbox)`
   & > .card {
 
   }
@@ -19,7 +17,7 @@ const StyledGradientShowcase = styled(Flexbox)<{
       weight: "normal"
     })}
 
-    color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
+    color: var(--fg-80);
     transition: color ${shortTransitionDuration}s;
   }
   & > .description {
@@ -28,7 +26,7 @@ const StyledGradientShowcase = styled(Flexbox)<{
       weight: "light"
     })}
 
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--medium-dark-gray)'};
+    color: var(--fg-60);
     transition: color ${shortTransitionDuration}s;
   }
 `;
@@ -39,15 +37,12 @@ export const GradientShowcase : FC<{
   readonly description: string;
   readonly pic: string;
 
-}> = ({ colorScheme, title, description, pic }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+}> = ({ colorScheme, title, description, pic, ...props }) => {
   return (
     <StyledGradientShowcase
       type="vertical"
       gap={15}
-      isDark={isDark}
+      {...props}
     >
       <GradientWithPicCard
         colorScheme={colorScheme}

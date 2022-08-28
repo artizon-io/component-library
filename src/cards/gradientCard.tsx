@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent, useState, useEffect, useContext } from "react";
+import React, { FC, SyntheticEvent, useState, useEffect, useContext, useMemo } from "react";
 import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo, ArrowRight, EnvelopeSimple, SmileyNervous, PaperPlaneRight } from "phosphor-react";
@@ -13,12 +13,10 @@ import { GradientCardStyle } from "./gradientCardStyle";
 
 
 const StyledGradientCard = styled(Flexbox)<{
-  readonly colorFrom : string;
-  readonly colorTo : string;
-  readonly isDark : boolean;
+  readonly colorFrom: string
+  readonly colorTo: string;
 }>`
   ${props => GradientCardStyle({
-    isDark: props.isDark,
     colorFrom: props.colorFrom,
     colorTo: props.colorTo
   })};
@@ -36,10 +34,11 @@ const StyledGradientCard = styled(Flexbox)<{
 
     background: linear-gradient(to right, ${props => props.colorFrom}, ${props => props.colorTo});
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   & > .body {
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+    color: var(--fg-60);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -54,19 +53,20 @@ export const GradientCard : FC<{
   readonly body: string;
   readonly colorScheme: colorScheme;
 
-}> = ({ title, body, colorScheme }) => {
+}> = ({ title, body, colorScheme, ...props }) => {
   const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
+  // let [colorFrom, colorTo] = useMemo(() => getColorsFromScheme(colorScheme, isDark), [isDark]);
   let [colorFrom, colorTo] = getColorsFromScheme(colorScheme, isDark);
 
   return (
     <StyledGradientCard
       type="vertical"
-      gap="small"
+      gap={15}
       colorFrom={colorFrom}
       colorTo={colorTo}
-      isDark={isDark}
+      {...props}
     >
       <h3 className="title">{title}</h3>
       <p className="body">{body}</p>

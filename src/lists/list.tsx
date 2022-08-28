@@ -4,9 +4,7 @@ import { useThemeContext } from "../hooks/useThemeContext";
 import { ListItem } from "./listItem";
 
 
-const StyledList = styled.ul<{
-  readonly isDark: boolean;
-}>`
+const StyledList = styled.ul`
   list-style: none;
 
   & > li:not(:first-child) {
@@ -17,14 +15,9 @@ const StyledList = styled.ul<{
 export const List : FC<{
   readonly children: ReactNode[];
 
-} & React.HTMLAttributes<HTMLUListElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLUListElement>> = ({ children, ...props }) => {
   return (
-    <StyledList
-      isDark={isDark}
-    >
+    <StyledList {...props}>
       {children}
     </StyledList>
   );

@@ -3,15 +3,12 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { FontStyle } from "../styles/font";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 
 
-const StyledSimpleButton = styled.button<{
-  readonly isDark : boolean;
-}>`
-  color: var(--off-white);
-  background: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+const StyledSimpleButton = styled.button`
+  color: var(--fg-80);
+  background: var(--main-20);
 
   padding: 8px 16px;
   border: none;
@@ -24,23 +21,19 @@ const StyledSimpleButton = styled.button<{
   })}
 
   &:hover {
-    box-shadow: 0px 0px 32px 8px ${props => props.isDark ? 'var(--blue)' : 'var(--blue)'};
+    box-shadow: 0px 0px 32px 8px var(--main-20);
     cursor: pointer;
   }
   transition: box-shadow ${longTransitionDuration}s, color ${shortTransitionDuration}s, background ${shortTransitionDuration}s;
 `;
 
 export const SimpleButton : FC<{
-  readonly type?: string;
 
-} & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick, ...props }) => {
   return (
     <StyledSimpleButton
       onClick={onClick}
-      isDark={isDark}
+      {...props}
     >{children}</StyledSimpleButton>
   );
 }

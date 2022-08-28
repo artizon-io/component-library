@@ -6,10 +6,10 @@ interface Props {
   visuallyHiddenText?: string;
 }
 
-export const Tooltip : FC<Props> = ({children, content, visuallyHiddenText}) => {
+export const Tooltip : FC<Props> = ({children, content, visuallyHiddenText, ...props}) => {
   return (
-    <>
+    <div {...props}>
       {children}
-    </>
+    </div>
   )
 }

@@ -15,11 +15,12 @@ const StyledBlogWrapper = styled(Flexbox)`
 
 export const BlogWrapper : FC<{
 
-} & React.HTMLAttributes<HTMLDivElement>> = ({ children }) => {
+} & React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   return (
     <StyledBlogWrapper
       type="vertical"
       gap={30}
+      {...props}
     >
       <MDXProvider
         components={{

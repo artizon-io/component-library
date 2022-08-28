@@ -4,9 +4,9 @@ import React, { FC } from "react";
 const ScrollProgressbarStyle = styled.div`
 `;
 
-export const ScrollProgressbar : FC<{}> = ({}) => {
+export const ScrollProgressbar : FC<{}> = ({ ...props }) => {
   return (
-    <ScrollProgressbarStyle>
+    <ScrollProgressbarStyle {...props}>
     </ScrollProgressbarStyle>
   );
 };

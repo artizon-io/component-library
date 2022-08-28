@@ -11,12 +11,10 @@ import { longTransitionDuration } from "../styles/transition";
 const StyledGradientWithPicCard = styled(Flexbox)<{
   readonly colorFrom : string;
   readonly colorTo : string;
-  readonly isDark : boolean;
 }>`
   ${props => GradientCardStyle({
     colorFrom: props.colorFrom,
     colorTo: props.colorTo,
-    isDark: props.isDark
   })}
   background: linear-gradient(to right, ${props => props.colorFrom}, ${props => props.colorTo});
   border: none;
@@ -34,7 +32,7 @@ export const GradientWithPicCard : FC<{
   readonly colorScheme: colorScheme;
   readonly pic: string;
 
-} & React.HTMLAttributes<HTMLDivElement>> = ({ colorScheme, pic }) => {
+} & React.HTMLAttributes<HTMLDivElement>> = ({ colorScheme, pic, ...props }) => {
   const { theme, toggleTheme } = useThemeContext();
   const isDark = theme === "dark";
 
@@ -44,10 +42,10 @@ export const GradientWithPicCard : FC<{
   return (
     <StyledGradientWithPicCard
       type="vertical"
-      gap="small"
+      gap={15}
       colorFrom={colorFrom}
       colorTo={colorTo}
-      isDark={isDark}
+      {...props}
     >
       <img src={pic} className="pic"/>
     </StyledGradientWithPicCard>

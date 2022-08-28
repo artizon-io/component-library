@@ -2,8 +2,6 @@ import React, { FC, SyntheticEvent, useState, useEffect, useContext, ReactNode, 
 import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo, ArrowRight, EnvelopeSimple, SmileyNervous, PaperPlaneRight } from "phosphor-react";
-import { ThemeContext } from "../contexts/themeContext";
-import { copyToClipboard } from "../helpers";
 import { Flexbox } from "../layouts/flexbox";
 import { NewsletterForm } from "../forms/newsletterForm";
 import { CardStyle } from "./cardStyle";
@@ -12,7 +10,6 @@ import { CardStyle } from "./cardStyle";
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { FontStyle } from "../styles/font";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { longTransitionDuration, shortTransitionDuration } from "../styles/transition";
 import { Logo } from "../logos/logo";
 import { List } from "../lists/list";
@@ -30,13 +27,13 @@ const StyledNewsletterCard = styled(Flexbox)`
     gap: 5px;
 
     & > svg {
-      color: ${props => props.isDark ? 'var(--off-off-white)' : 'var(--navy)'};
+      color: var(--fg-80);
       transition: color ${shortTransitionDuration}s;
     }
     margin-bottom: 30px;
   }
   & > .title {
-    color: ${props => props.isDark ? 'var(--off-off-white)' : 'var(--navy)'};
+    color: var(--fg-80);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -48,7 +45,7 @@ const StyledNewsletterCard = styled(Flexbox)`
   }
   /* bullet-points-title */
   & > p {
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+    color: var(--fg-60);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -57,7 +54,7 @@ const StyledNewsletterCard = styled(Flexbox)`
     })}
 
     & > a {
-      color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+      color: var(--main-60);
 
       ${FontStyle({
         size: 18,
@@ -68,9 +65,10 @@ const StyledNewsletterCard = styled(Flexbox)`
       text-decoration-color: transparent;
       text-underline-offset: 3px;
       text-decoration-thickness: 2px;
-
+      
       &:hover {
-        text-decoration-color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+        color: var(--main-60);
+        text-decoration-color: var(--main-60);
       }
       transition: color ${shortTransitionDuration}s, text-decoration-color ${shortTransitionDuration}s;
     }
@@ -88,18 +86,12 @@ export const NewsletterCard : FC<{
   readonly bulletPoints : string[];
   readonly onSubmitBusinessLogic? : (string) => void;
 
-} & React.HTMLAttributes<HTMLDivElement>> = ({ title, bulletPoints, bulletPointsTitle, onSubmitBusinessLogic }) => {
-  // useEffect(() => {
-  //   console.log(bulletPoints);
-  // }, []);
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLDivElement>> = ({ title, bulletPoints, bulletPointsTitle, onSubmitBusinessLogic, ...props }) => {
   return (
     <StyledNewsletterCard
       type="vertical"
       gap={15}
-      isDark={isDark}
+      {...props}
     >
       <Flexbox
         type="horizontal"

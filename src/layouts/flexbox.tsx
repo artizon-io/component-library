@@ -19,12 +19,12 @@ export const Flexbox : FC<{
   readonly type: "horizontal" | "vertical";
   readonly gap: number;
 
-} & React.HTMLAttributes<HTMLDivElement>> = ({children, type, gap, className}) => {
+} & React.HTMLAttributes<HTMLDivElement>> = ({children, type, gap, ...props}) => {
   return (
     <StyledFlexbox
       type={type}
       gap={gap}
-      className={className}
+      {...props}
     >
       {children}
     </StyledFlexbox>

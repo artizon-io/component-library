@@ -1,17 +1,14 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { FontStyle } from "../styles/font";
 import { shortTransitionDuration } from "../styles/transition";
 
-const StyledArticleCard = styled.div<{
-  readonly isDark: boolean;
-}>`
+const StyledArticleCard = styled.div`
   &:hover {
     & > .title {
-      color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+      color: var(--main-80);
     }
-    background: ${props => props.isDark ? 'var(--dark-blue)' : 'var(--light-blue)'};
+    background: var(--main-20);;
     cursor: pointer;
   }
   transition: background ${shortTransitionDuration}s;
@@ -27,7 +24,7 @@ const StyledArticleCard = styled.div<{
       size: 13,
       weight: "normal"
     })}
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--medium-dark-gray)'};
+    color: var(--fg-40);;
     transition: color ${shortTransitionDuration}s;
 
     width: 100px;
@@ -37,10 +34,10 @@ const StyledArticleCard = styled.div<{
       size: 18,
       weight: "normal"
     })}
-    color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
+    color: var(--fg-80);;
 
     &:hover {
-      color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+      color: var(--main-80);;
     }
     transition: color ${shortTransitionDuration}s;
   }
@@ -50,13 +47,10 @@ export const ArticleCard : FC<{
   readonly date: string;
   readonly title: string;
 
-}> = ({ date, title }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+}> = ({ date, title, ...props }) => {
   return (
     <StyledArticleCard
-      isDark={isDark}
+      {...props}
     >
       <span className="date">{date}</span>
       <span className="title">{title}</span>

@@ -1,16 +1,13 @@
 import React, { FC, SyntheticEvent, useState, useEffect, useContext, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { ThemeContext } from "../contexts/themeContext";
 import { shortTransitionDuration, longTransitionDuration } from "../styles/transition";
 
 
-const StyledThemeToggleButton = styled(motion.button)<{
-  readonly isDark : boolean;
-}>`
-  color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
-  background: ${props => props.isDark ? 'var(--dark-gray)' : 'var(--off-off-white)'};;
+const StyledThemeToggleButton = styled(motion.button)<React.HTMLAttributes<HTMLButtonElement>>`
+  color: var(--fg-20);
+  background: var(--bg-60);
 
   border: none;
   border-radius: 8px;
@@ -18,9 +15,9 @@ const StyledThemeToggleButton = styled(motion.button)<{
   width: 45px;
 
   &:hover {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-40);
     cursor: pointer;
-    box-shadow: 0px 0px 32px 8px ${props => props.isDark ? 'var(--dark-blue)' : 'var(--light-blue)'}, inset 0px 0px 0px 2px ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    box-shadow: 0px 0px 32px 8px var(--main-40), inset 0px 0px 0px 2px var(--main-40);
     transform: scale(0.9);
   }
   transition: color ${longTransitionDuration}s, box-shadow ${shortTransitionDuration}s, transform ${shortTransitionDuration}s, background ${shortTransitionDuration}s;
@@ -35,11 +32,11 @@ const StyledThemeToggleButton = styled(motion.button)<{
 
 export const ThemeToggleButton : FC<{
 
-} & React.HTMLAttributes<HTMLButtonElement>> = ({}) => {
+}> = ({ ...props }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const isDark = theme === 'dark';
 
   const duration = 0.6;
-  const isDark = theme === 'dark';
 
   const moonVariants = {
     visible: {
@@ -77,7 +74,6 @@ export const ThemeToggleButton : FC<{
   return (
     <StyledThemeToggleButton
       onClick={toggleTheme}
-      isDark={isDark}
     >
       <motion.svg
         width="28"

@@ -6,10 +6,8 @@ import { useThemeContext } from "../hooks/useThemeContext";
 import { ArrowRight } from "phosphor-react";
 
 
-const StyledListItem = styled.li<{
-  readonly isDark: boolean;
-}>`
-  color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+const StyledListItem = styled.li`
+  color: var(--fg-60);
   transition: color ${shortTransitionDuration}s;
 
   ${FontStyle({
@@ -18,7 +16,7 @@ const StyledListItem = styled.li<{
   })}
 
   & > em {
-    color: ${props => props.isDark ? 'var(--off-off-white)' : 'var(--medium-dark-gray)'};
+    color: var(--fg-80);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -28,20 +26,15 @@ const StyledListItem = styled.li<{
     })}
   }
   & > svg {
-    color: var(--blue);
+    color: var(--main-60);;
   }
 `;
 
 export const ListItem : FC<{
 
-} & React.HTMLAttributes<HTMLLIElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLLIElement>> = ({ children, ...props }) => {
   return (
-    <StyledListItem
-      isDark={isDark}
-    >
+    <StyledListItem {...props}>
       <ArrowRight size={20} weight="bold"/>
       &nbsp;
       {children}

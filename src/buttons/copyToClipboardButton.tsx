@@ -3,15 +3,13 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { copyToClipboard } from "../helpers";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 
 const StyledCopyToClipboardButton = styled.button<{
   readonly isActive : boolean;
-  readonly isDark : boolean;
 }>`
-  color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--medium-dark-gray)'};
+  color: var(--fg-60);
   transition: color ${shortTransitionDuration}s;
 
   background: transparent;
@@ -32,13 +30,10 @@ const StyledCopyToClipboardButton = styled.button<{
 export const CopyToClipboardButton : FC<{
   readonly textToCopy? : string;
 
-} & React.HTMLAttributes<HTMLButtonElement>> = ({ textToCopy }) => {
+} & React.HTMLAttributes<HTMLButtonElement>> = ({ textToCopy, ...props }) => {
   const [isActive, setIsActive] = useState(false);
 
   const duration = 0.3;
-
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
 
   const boxVariants = {
     animate: {
@@ -85,10 +80,9 @@ export const CopyToClipboardButton : FC<{
         if (!isActive) {
           copyToClipboard(textToCopy);
           setIsActive(true);
-          console.log(`Copy to clipboard button activated`);
         }
       }}
-      isDark={isDark}
+      {...props}
     >
       <motion.svg
         width="25"

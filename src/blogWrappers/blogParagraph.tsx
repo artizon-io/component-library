@@ -4,10 +4,8 @@ import { FontStyle } from "../styles/font";
 import React, { FC } from "react";
 import { useThemeContext } from "../hooks/useThemeContext";
 
-const StyledBlogParagraph = styled.p<{
-  readonly isDark: boolean;
-}>`
-  color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+const StyledBlogParagraph = styled.p`
+  color: var(--fg-60);
   transition: color ${shortTransitionDuration}s;
 
   ${FontStyle({
@@ -16,7 +14,7 @@ const StyledBlogParagraph = styled.p<{
   })}
 
   & > a {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-60);
 
     ${FontStyle({
       size: 18,
@@ -29,7 +27,7 @@ const StyledBlogParagraph = styled.p<{
     text-decoration-thickness: 2px;
 
     &:hover {
-      text-decoration-color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+      text-decoration-color: var(--main-60);
     }
     transition: color ${shortTransitionDuration}s, text-decoration-color ${shortTransitionDuration}s;
   }
@@ -37,13 +35,10 @@ const StyledBlogParagraph = styled.p<{
 
 export const BlogParagraph : FC<{
 
-} & React.HTMLAttributes<HTMLParagraphElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLParagraphElement>> = ({ children, ...props }) => {
   return (
     <StyledBlogParagraph
-      isDark={isDark}
+      {...props}
     >
       {children}
     </StyledBlogParagraph>

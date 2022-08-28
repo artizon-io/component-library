@@ -6,10 +6,8 @@ import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 
-const SubHeadingStyle = styled.h2<{
-  readonly isDark: boolean;
-}>`
-  color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
+const SubHeadingStyle = styled.h2`
+  color: var(--fg-60);
 
   ${FontStyle({
     size: 26,
@@ -20,13 +18,8 @@ const SubHeadingStyle = styled.h2<{
 
 export const SubHeading : FC<{
   
-} & React.HTMLAttributes<HTMLHeadingElement>> = ({ children }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLHeadingElement>> = ({ children, ...props }) => {
   return (
-    <SubHeadingStyle
-      isDark={isDark}
-    >{children}</SubHeadingStyle>
+    <SubHeadingStyle {...props}>{children}</SubHeadingStyle>
   );
 }

@@ -6,11 +6,9 @@ import { ThemeContext } from "../contexts/themeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
 
-const HeadingStyle = styled.div<{
-  readonly isDark: boolean
-}>`
+const HeadingStyle = styled.div`
   & > .main-text {
-    color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
+    color: var(--fg-80);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -19,7 +17,7 @@ const HeadingStyle = styled.div<{
     })}
   }
   & > .secondary-text {
-    color: ${props => props.isDark ? 'var(--medium-light-gray)' : 'var(--gray)'};
+    color: var(--fg-40);
     transition: color ${shortTransitionDuration}s;
 
     ${FontStyle({
@@ -33,14 +31,9 @@ export const Heading : FC<{
   readonly mainText: string;
   readonly secondaryText: string;
 
-} & React.HTMLAttributes<HTMLDivElement>> = ({ mainText, secondaryText }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const isDark = theme === 'dark';
-
+} & React.HTMLAttributes<HTMLDivElement>> = ({ mainText, secondaryText, ...props }) => {
   return (
-    <HeadingStyle
-      isDark={isDark}
-    >
+    <HeadingStyle {...props}>
       <h1 className="main-text">{mainText}</h1>
       <p className="secondary-text">{secondaryText}</p>
     </HeadingStyle>

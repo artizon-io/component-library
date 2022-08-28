@@ -4,11 +4,9 @@ import styled from "@emotion/styled";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration } from "../styles/transition";
 
-const StyledLogo = styled.span<{
-  readonly isDark: boolean;
-}>`
+const StyledLogo = styled.span`
   & > .logo {
-    color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
+    color: var(--fg-80);
     transition: color ${shortTransitionDuration}s;
   }
 `;
@@ -16,14 +14,9 @@ const StyledLogo = styled.span<{
 export const Logo : FC<{
   readonly size: number;
 
-}> = ({ size }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+}> = ({ size, ...props }) => {
   return (
-    <StyledLogo
-      isDark={isDark}
-    >
+    <StyledLogo {...props}>
       <SmileyNervous size={size} className="logo"/>
     </StyledLogo>
   );

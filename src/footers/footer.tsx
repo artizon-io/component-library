@@ -8,11 +8,9 @@ import { Logo } from "../logos/logo";
 import { FontStyle } from "../styles/font";
 
 
-const StyledFooter = styled.footer<{
-  readonly isDark: boolean;
-}>`
+const StyledFooter = styled.footer`
   background: transparent;
-  border-top: 1px solid ${props => props.isDark ? 'var(--medium-dark-gray)' : 'var(--off-off-white)'};
+  border-top: 1px solid var(--bg-60);
   transition: border-top ${longTransitionDuration}s;
   padding: 50px;
 
@@ -27,15 +25,15 @@ const StyledFooter = styled.footer<{
           weight: "normal"
         })}
 
-        color: ${props => props.isDark ? 'var(--off-off-white)' : 'var(--gray)'};
+        color: var(--fg-40);
         text-decoration: underline;
         text-decoration-color: transparent;
         text-underline-offset: 3px;
         text-decoration-thickness: 1px;
 
         &:hover {
-          color: ${props => props.isDark ? 'var(--off-white)' : 'var(--medium-dark-gray)'};
-          text-decoration-color: ${props => props.isDark ? 'var(--off-white)' : 'var(--medium-dark-gray)'};
+          color: var(--fg-80);
+          color: var(--fg-60);
         }
 
         transition: color ${shortTransitionDuration}s, text-decoration-color ${shortTransitionDuration}s;
@@ -54,7 +52,7 @@ const StyledFooter = styled.footer<{
         weight: "normal"
       })}
 
-      color: ${props => props.isDark ? 'var(--off-white)' : 'var(--medium-dark-gray)'};
+      color: var(--fg-20);
       transition: color ${shortTransitionDuration}s;
 
       & > em {
@@ -72,14 +70,9 @@ export const Footer : FC<{
   readonly navs: string[];
   readonly copyright: string;
 
-}> = ({ navs, copyright }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+}> = ({ navs, copyright, ...props }) => {
   return (
-    <StyledFooter
-      isDark={isDark}
-    >
+    <StyledFooter {...props}>
       <nav className="nav">
         <ul>
           {navs.map((nav, index) =>

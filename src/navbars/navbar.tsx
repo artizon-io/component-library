@@ -11,9 +11,7 @@ import { Logo } from "../logos/logo";
 // See position: fixed + width: 100% fix
 // https://stackoverflow.com/questions/18442628/position-fixed-width-100
 
-const NavbarStyle = styled.nav<{
-  readonly isDark : boolean;
-}>`
+const NavbarStyle = styled.nav`
   position: fixed;
   top: 0px;
   display: flex;
@@ -23,19 +21,14 @@ const NavbarStyle = styled.nav<{
   right: 0;
   z-index: 1;
   padding: 40px;
-  border-bottom: 1px solid ${props => props.isDark ? 'var(--medium-dark-gray)' : 'var(--off-off-white)'};
+  border-bottom: 1px solid var(--bg-60);
   transition: border-bottom ${longTransitionDuration}s;
   backdrop-filter: blur(10px);
 `;
 
-export const Navbar : FC<{}> = ({}) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+export const Navbar : FC<{}> = ({ ...props }) => {
   return (
-    <NavbarStyle
-      isDark={isDark}
-    >
+    <NavbarStyle {...props}>
       <a href="#"><Logo size={45}/></a>
       <ThemeToggleButton/>
     </NavbarStyle>

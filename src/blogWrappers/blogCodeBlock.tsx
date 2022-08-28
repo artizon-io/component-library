@@ -7,9 +7,7 @@ import { CardStyle } from '../cards/cardStyle';
 import { longTransitionDuration, shortTransitionDuration } from '../styles/transition';
 
 
-const Pre = styled.pre<{
-  readonly isDark: boolean;
-}>`
+const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
   padding: 0.5em;
@@ -17,7 +15,7 @@ const Pre = styled.pre<{
 
   .token.comment,
   .token.doctype {
-    color: ${props => props.isDark ? 'var(--gray)' : 'var(--light-gray)'};
+    color: var(--fg-40);
   }
   
   .token.prolog,
@@ -28,12 +26,12 @@ const Pre = styled.pre<{
   .token.template-string,
   .token.interpolation
   {
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+    color: var(--fg-40);
   }
 
   .token.punctuation,
   .token.property-access {
-    color: ${props => props.isDark ? 'var(--light-gray)' : 'var(--gray)'};
+    color: var(--fg-40);
   }
 
   .token.property,
@@ -43,7 +41,7 @@ const Pre = styled.pre<{
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-80);
   }
 
   .token.selector,
@@ -53,32 +51,32 @@ const Pre = styled.pre<{
   .token.number,
   .token.string,
   .token.inserted {
-    color: ${props => props.isDark ? '#FD4FA6' : '#CD176C'};
+    color: var(--second-80);
   }
 
   .token.operator,
   .token.entity,
   .token.url,
   .language-css .style {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-80);
   }
 
   .token.atrule,
   .token.attr-value,
   .token.keyword {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-80);
   }
 
   .token.function,
   .token.maybe-class-name,
   .token.class-name {
-    color: ${props => props.isDark ? '#FD4FA6' : '#CD176C'};
+    color: var(--second-80);
   }
 
   .token.regex,
   .token.important,
   .token.variable {
-    color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+    color: var(--main-80);
   }
   
   ${FontStyle({
@@ -89,7 +87,6 @@ const Pre = styled.pre<{
   font-family: FiraCode;
   
   background: inherit;
-  /* background: ${props => props.isDark ? 'var(--dark-gray)' : 'var(--white)'}; */
   transition: background 1s, font ${shortTransitionDuration};
 `;
 
@@ -97,16 +94,14 @@ const Line = styled.div`
   display: table-row;
 `;
 
-const LineNo = styled.span<{
-  readonly isDark: boolean;
-}>`
+const LineNo = styled.span`
   display: table-cell;
   text-align: right;
   padding-right: 1em;
   user-select: none;
   opacity: 0.5;
 
-  color: ${props => props.isDark ? 'var(--gray)' : 'var(--light-gray)'};
+  color: var(--fg-40);
   transition: font ${shortTransitionDuration}s;
 `;
 
@@ -114,32 +109,27 @@ const LineContent = styled.span`
   display: table-cell;
 `;
 
-const StyledBlogCodeBlock = styled.div<{
-  readonly isDark: boolean;
-}>`
+const StyledBlogCodeBlock = styled.div`
   ${CardStyle}
   padding: 0;
   transition: background 1s, border-color ${shortTransitionDuration};
 `;
 
 export const BlogCodeBlock : FC<any> = (props) => {
-  const { children, className } = props.children.props;
+  const { children, className, ...childrenProps } = props.children.props;
   const lang = className.match(/language-(?<lang>.*)/).groups.lang;
 
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
   return (
-    <StyledBlogCodeBlock isDark={isDark}>
+    <StyledBlogCodeBlock {...childrenProps}>
       <Highlight {...defaultProps} code={children} language={lang} theme={{
         plain: {},
         styles: []
       }}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Pre className={className} style={style} isDark={isDark}>
+          <Pre className={className} style={style}>
             {tokens.map((line, i) => (
               <Line key={i} {...getLineProps({ line, key: i })}>
-                <LineNo isDark={isDark}>{i + 1}</LineNo>
+                <LineNo>{i + 1}</LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token, key })} />

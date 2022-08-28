@@ -3,17 +3,13 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowUpRight, GithubLogo } from "phosphor-react";
 import { Github } from 'react-bootstrap-icons';
-import { ThemeContext } from "../contexts/themeContext";
 import { FontStyle } from "../styles/font";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { shortTransitionDuration, longTransitionDuration } from "../styles/transition";
 
 
-const StyledIconButton = styled.button<{
-  readonly isDark : boolean;
-}>`
-  color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
-  background: ${props => props.isDark ? 'var(--dark-blue)' : 'var(--light-blue)'};
+const StyledIconButton = styled.button`
+  color: var(--main-100);
+  background: var(--main-20);
 
   padding: 12px 16px;
   border: none;
@@ -25,7 +21,7 @@ const StyledIconButton = styled.button<{
   })}
 
   &:hover {
-    box-shadow: 0px 0px 32px 8px ${props => props.isDark ? 'var(--dark-blue)' : 'var(--light-blue)'};
+    box-shadow: 0px 0px 32px 8px var(--main-20);
     cursor: pointer;
     transform: scale(1.1);
   }
@@ -38,14 +34,11 @@ const StyledIconButton = styled.button<{
 export const IconButton : FC<{
   readonly type: "github" | "link";
 
-} & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick, type }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
+} & React.HTMLAttributes<HTMLButtonElement>> = ({ children, onClick, type, ...props }) => {
   return (
     <StyledIconButton
       onClick={onClick}
-      isDark={isDark}
+      {...props}
     >
       {children}
       &nbsp;

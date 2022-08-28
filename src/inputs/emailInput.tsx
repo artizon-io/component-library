@@ -9,14 +9,12 @@ import { longTransitionDuration, shortTransitionDuration } from "../styles/trans
 // For affect the FOLLOWING sibling when element is hovered, see
 // https://stackoverflow.com/questions/12574668/change-color-of-sibling-elements-on-hover-using-css
 
-const EmailInputStyle = styled.div<{
-  readonly isDark : boolean;
-}>`
+const EmailInputStyle = styled.div`
   display: inline-block;
 
   position: relative;
   & > svg {
-    color: ${props => props.isDark ? 'var(--gray)' : 'var(--light-gray)'};
+    color: var(--fg-20);
 
     position: absolute;
     top: 0;
@@ -30,14 +28,14 @@ const EmailInputStyle = styled.div<{
     width: 100%;
 
     border-radius: 8px;
-    border: 1px solid ${props => props.isDark ? 'var(--medium-dark-gray)' : 'var(--off-off-white)'};
+    border: 1px solid var(--bg-40);
     outline: none;
-    background: ${props => props.isDark ? 'var(--black)' : 'var(--white)'};
+    background: var(--bg-100);
 
     padding: 12px 16px;
     padding-left: 42px;
 
-    color: var(--gray);
+    color: var(--fg-20);
 
     ${FontStyle({
       size: 16,
@@ -45,18 +43,18 @@ const EmailInputStyle = styled.div<{
     })}
 
     &:hover, &:focus, &:active {
-      box-shadow: 0px 0px 32px 8px ${props => props.isDark ? 'var(--dark-blue)' : 'var(--light-blue)'};;
+      box-shadow: 0px 0px 32px 8px var(--main-20);
 
-      color: ${props => props.isDark ? 'var(--off-white)' : 'var(--navy)'};
-      border-color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+      color: var(--fg-60);
+      border-color: var(--main-60);
       & + svg {
-        color: ${props => props.isDark ? 'var(--blue)' : 'var(--royal)'};
+        color: var(--main-60);
       }
     }
     transition: color ${shortTransitionDuration}s, box-shadow ${longTransitionDuration}s, border-color ${shortTransitionDuration}s, background ${shortTransitionDuration}s;
 
     &::placeholder {
-      color: ${props => props.isDark ? 'var(--gray)' : 'var(--light-gray)'};
+      color: var(--fg-20);
       transition: color ${shortTransitionDuration}s;
     }
   }
@@ -67,16 +65,10 @@ export const EmailInput : FC<{
   readonly value?: string
 
 } & React.HTMLAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLInputElement>> = ({
-  required, onChange, value, className
+  required, onChange, value, className, ...props
 }) => {
-  const { theme, toggleTheme } = useThemeContext();
-  const isDark = theme === "dark";
-
   return (
-    <EmailInputStyle
-      className={className}
-      isDark={isDark}
-    >
+    <EmailInputStyle {...props}>
       <input
         type="email"
         placeholder="your@email.com" 
