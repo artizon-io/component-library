@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FC } from "react";
 import { FontStyle } from "../styles/font";
+import { shortTransitionDuration } from "../styles/transition";
 
 const StyledBlogCodeInline = styled.code`
   font-family: FiraCode;
@@ -11,15 +12,14 @@ const StyledBlogCodeInline = styled.code`
   })}
 
   border-radius: 3px;
-  border: 1px solid var(--bg-40);
 
-  background: var(--fg-60);
+  background: var(--bg-60);
   color: var(--main-80);
 
   padding: 2px 8px;
 
   word-break: break-word;
-  box-shadow: 0px 0px 32px 8px var(--fg-60);
+  transition: background ${shortTransitionDuration}s, color ${shortTransitionDuration}s;
 `;
 
 export const BlogCodeInline : FC<{

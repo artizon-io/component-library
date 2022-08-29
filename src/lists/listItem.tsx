@@ -26,7 +26,9 @@ const StyledListItem = styled.li`
     })}
   }
   & > svg {
-    color: var(--main-60);;
+    color: var(--main-60);
+    position: relative;
+    top: 3px;
   }
   &:not(:first-of-type) {
     margin-top: 20px;
