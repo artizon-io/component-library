@@ -28,6 +28,9 @@ const StyledListItem = styled.li`
   & > svg {
     color: var(--main-60);;
   }
+  &:not(:first-of-type) {
+    margin-top: 20px;
+  }
 `;
 
 export const ListItem : FC<{

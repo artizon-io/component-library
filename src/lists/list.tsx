@@ -7,9 +7,9 @@ import { ListItem } from "./listItem";
 const StyledList = styled.ul`
   list-style: none;
 
-  & > li:not(:first-child) {
+  /* & > li:not(:first-child) {
     margin-top: 20px;
-  }
+  } */
 `;
 
 export const List : FC<{
