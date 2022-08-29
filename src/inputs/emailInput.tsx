@@ -65,7 +65,7 @@ export const EmailInput : FC<{
   readonly value?: string
 
 } & React.HTMLAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLInputElement>> = ({
-  required, onChange, value, className, ...props
+  required, onChange, value, ...props
 }) => {
   return (
     <EmailInputStyle {...props}>
