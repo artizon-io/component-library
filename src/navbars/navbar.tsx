@@ -21,6 +21,7 @@ const NavbarStyle = styled.nav`
   right: 0;
   z-index: 1;
   padding: 40px;
+  background: transparent;
   border-bottom: 1px solid var(--bg-60);
   transition: border-bottom ${longTransitionDuration}s;
   backdrop-filter: blur(10px);

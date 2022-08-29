@@ -17,7 +17,7 @@ const SubHeadingStyle = styled.h2`
 `;
 
 export const SubHeading : FC<{
-  
+
 } & React.HTMLAttributes<HTMLHeadingElement>> = ({ children, ...props }) => {
   return (
     <SubHeadingStyle {...props}>{children}</SubHeadingStyle>

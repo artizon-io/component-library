@@ -7,7 +7,7 @@ export function copyToClipboard(content : string) : void {
 export type colorScheme = "purple-pink" | "blue-red" | "orange-pink" | "royal-white";
 
 export function getColorsFromScheme(colorScheme : string, isDark : boolean) : [string, string] {
-  let colorFrom, colorTo;
+  let colorFrom : string, colorTo : string;
 
   switch(colorScheme) {
     case "purple-pink":
@@ -46,6 +46,8 @@ export function getColorsFromScheme(colorScheme : string, isDark : boolean) : [s
         colorTo = "#2B14BF";
       }
       break;
+    default:
+      throw `Undefined color scheme ${colorScheme}`
   }
   return [colorFrom, colorTo];
 }

@@ -13,7 +13,6 @@ const StyledList = styled.ul`
 `;
 
 export const List : FC<{
-  readonly children: ReactNode[];
 
 } & React.HTMLAttributes<HTMLUListElement>> = ({ children, ...props }) => {
   return (

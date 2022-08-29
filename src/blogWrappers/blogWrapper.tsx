@@ -7,6 +7,7 @@ import { BlogListItem } from "./blogListItem";
 import { BlogParagraph } from "./blogParagraph";
 import { BlogCodeBlock } from "./blogCodeBlock";
 import { Flexbox } from "../layouts/flexbox";
+import { BlogCodeInline } from "./blogCodeInline";
 
 // https://mdxjs.com/docs/using-mdx/#mdx-content
 
@@ -28,7 +29,8 @@ export const BlogWrapper : FC<{
           ul: BlogList,
           li: BlogListItem,
           p: BlogParagraph,
-          pre: BlogCodeBlock
+          pre: BlogCodeBlock,
+          code: BlogCodeInline
         }}
       >
         {children}

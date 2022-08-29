@@ -1,7 +1,6 @@
 import React, { FC, JSXElementConstructor, ReactElement, ReactNode } from 'react';
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import styled from '@emotion/styled';
-import { useThemeContext} from '../hooks/useThemeContext';
 import { FontStyle } from '../styles/font';
 import { CardStyle } from '../cards/cardStyle';
 import { longTransitionDuration, shortTransitionDuration } from '../styles/transition';

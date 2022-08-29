@@ -4,12 +4,12 @@ import fs from "./shaders/displacementSphere.fs";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas, MeshProps, ThreeElements, useFrame } from "@react-three/fiber";
 import React, { FC, useMemo, useRef } from "react";
-import { MathUtils } from "three";
+import { IcosahedronGeometry, MathUtils, Mesh, ShaderMaterial } from "three";
 
 export const DisplacementSphere : FC<{
 
 }> = ({}) => {
-  const mesh = useRef<MeshProps>();
+  const mesh = useRef<Mesh<IcosahedronGeometry, ShaderMaterial>>(null);
   const hover = useRef(false);
 
   const uniforms = useMemo(

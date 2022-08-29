@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { shortTransitionDuration } from "../styles/transition";
 import { FontStyle } from "../styles/font";
 import React, { FC } from "react";
-import { useThemeContext } from "../hooks/useThemeContext";
+
 
 const StyledBlogParagraph = styled.p`
   color: var(--fg-60);
@@ -30,6 +30,23 @@ const StyledBlogParagraph = styled.p`
       text-decoration-color: var(--main-60);
     }
     transition: color ${shortTransitionDuration}s, text-decoration-color ${shortTransitionDuration}s;
+  }
+  & > em {
+    color: var(--fg-80);
+
+    ${FontStyle({
+      size: 18,
+      weight: "normal",
+      style: "italic"
+    })}
+  }
+  & > b {
+    color: var(--fg-80);
+
+    ${FontStyle({
+      size: 18,
+      weight: "bold",
+    })}
   }
 `;
 

@@ -28,7 +28,7 @@ const StyledCopyToClipboardButton = styled.button<{
 // https://stackoverflow.com/questions/44369706/react-typescript-usage-of-classname-prop
 
 export const CopyToClipboardButton : FC<{
-  readonly textToCopy? : string;
+  readonly textToCopy : string;
 
 } & React.HTMLAttributes<HTMLButtonElement>> = ({ textToCopy, ...props }) => {
   const [isActive, setIsActive] = useState(false);

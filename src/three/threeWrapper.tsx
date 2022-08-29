@@ -13,10 +13,10 @@ const StyledThreeWrapper = styled.div<{
 
 export const ThreeWrapper : FC<{
   readonly orbitControls: boolean;
-  readonly children: ReactNode;
+  readonly children?: ReactNode | ReactNode[];
   readonly height: number;
 
-} & typeof Canvas> = ({ children, orbitControls, height }) => {
+} & React.HTMLAttributes<HTMLDivElement>> = ({ children, orbitControls, height }) => {
   return (
     <StyledThreeWrapper height={height}>
       <Canvas camera={{ position: [0.0, 0.0, 8.0] }}>

@@ -4,7 +4,7 @@ import React from "react";
 
 const Dummy = () => (<span></span>);
 
-const Default = createStorybookComponent(Dummy);
+const Default = createStorybookComponent(Dummy, {});
 
 // export default config;
 export default {

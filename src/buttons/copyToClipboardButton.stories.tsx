@@ -2,7 +2,7 @@ import { CopyToClipboardButton } from './copyToClipboardButton';
 import createStorybookComponent from "../createStorybookComponent";
 
 
-const Default = createStorybookComponent(CopyToClipboardButton);
+const Default = createStorybookComponent(CopyToClipboardButton, {textToCopy: "some text"});
 
 // export default config;
 export default {

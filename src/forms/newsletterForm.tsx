@@ -13,20 +13,21 @@ const StyledNewsletterForm = styled(StyledFlexbox.withComponent('form'))`
 `;
 
 export const NewsletterForm : FC<{
-  readonly onSubmitBusinessLogic? : (string) => void;
+  readonly onSubmitBusinessLogic? : (email: string) => void;
 
 } & React.HTMLAttributes<HTMLFormElement>> = ({ onSubmitBusinessLogic, ...props }) => {
   const [email, setEmail] = useState('');
 
-  function onSubmit(e) {
+  const onSubmit : React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     if (onSubmitBusinessLogic)
       onSubmitBusinessLogic(email);
     setEmail('');
   }
 
-  function onChange(e) {
-    setEmail(e.target.value);
+  const onChange : React.FormEventHandler<HTMLInputElement> = (e) => {
+    const target = e.target as HTMLInputElement;
+    setEmail(target.value);
   }
 
   // Opened issue of compatibility between emotion "as" prop and typescript
