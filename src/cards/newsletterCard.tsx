@@ -112,10 +112,10 @@ export const NewsletterCard : FC<{
       <List
         className="bullet-points"
       >
-        {bulletPoints.map(text => <ReactMarkdown components={{
+        {bulletPoints.map((text, index) => <ReactMarkdown components={{
           // @ts-ignore
           p: ListItem
-        }}>{text}</ReactMarkdown>)}
+        }} key={index}>{text}</ReactMarkdown>)}
       </List>
 
       <NewsletterForm
