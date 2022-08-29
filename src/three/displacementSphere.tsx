@@ -42,7 +42,7 @@ export const DisplacementSphere : FC<{
     <mesh
       ref={mesh}
       position={[0, 0, 0]}
-      scale={1.5}
+      scale={2}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
     >
