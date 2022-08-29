@@ -4,3 +4,4 @@ dist/
 .husky
 .README.md
 *.log
+assets/

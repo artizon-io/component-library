@@ -7,14 +7,10 @@ import styled from '@emotion/styled';
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
-
-  & > .comp {
-    flex: 1;
-  }
 `;
 
 // A higher order component that returns a component with its storybook config
-export default function createStorybookComponent<Props>(Component : FC<Props>, args? : Props) :
+export default function createStorybookComponent<Props>(Component : FC<Props>, args : Props) :
   typeof GlobalStyleProvider
   // [{
   //   readonly title: string;
@@ -29,7 +25,7 @@ export default function createStorybookComponent<Props>(Component : FC<Props>, a
   const WrappedComponent = () =>
     <GlobalStyleProvider>
       <StyledContainer>
-        <Component className="comp" {...args}/>
+        <Component {...args}/>
         <ThemeToggleButton/>
       </StyledContainer>
     </GlobalStyleProvider>

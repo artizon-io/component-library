@@ -1,4 +1,7 @@
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   "stories": [
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
@@ -14,7 +17,15 @@ module.exports = {
       test: /\.mjs$/,
       include: /node_modules/,
       type: "javascript/auto",
-    })
+    });
+    config.module.rules.push({
+      test: /\.(jpg|webp)$/,
+      type: 'asset/resource'
+    });
+    config.module.rules.push({
+      test: /\.(vs|fs)$/,
+      type: 'asset/source'
+    });
     return config
   }
 }
