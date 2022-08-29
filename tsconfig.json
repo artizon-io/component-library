@@ -4,7 +4,10 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": ["ESNext", "DOM"],
-    // https://stackoverflow.com/questions/44020689/why-would-i-use-typescript-and-babel-together
+    "noImplicitAny": true,
+    "allowUnreachableCode": false,
+    "noImplicitReturns": true,
+    "strict": true,
   },
   "include": [
     "src"
