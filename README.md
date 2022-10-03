@@ -1,4 +1,4 @@
-# Acrylic Design System [WIP]
+# Component Library
 ![Testing](https://github.com/mingsumsze/design-system/actions/workflows/ci.yml/badge.svg)
 
 ## License
